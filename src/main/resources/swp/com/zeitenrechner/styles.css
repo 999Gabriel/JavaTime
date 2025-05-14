@@ -1,0 +1,406 @@
+/* styles.css */
+
+/* --- Global Styles & Root --- */
+.root {
+    -fx-background-color: #1e1e2f; /* Dark Sapphire Blue/Near Black */
+    -fx-font-family: "Consolas", "Lucida Console", monospace; /* Technical font */
+    -fx-text-fill: #c0c5ce; /* Light Grey/Blue Text */
+    -fx-accent: #00bfff; /* Deep Sky Blue Accent */
+    -fx-focus-color: #00bfff;
+    -fx-faint-focus-color: transparent; /* Remove faint focus halo */
+}
+
+/* --- Typography --- */
+.label {
+    -fx-text-fill: #c0c5ce; /* Default label text color */
+}
+
+.app-title {
+    -fx-font-size: 28px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff; /* White for prominence */
+    -fx-padding: 0 0 15 0; /* Add some bottom padding */
+    -fx-effect: dropshadow(gaussian, rgba(0, 191, 255, 0.5), 5, 0.0, 0, 1); /* Subtle glow effect */
+}
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #00bfff; /* Accent color for section titles */
+    -fx-padding: 10 0 5 0;
+}
+
+.input-label,
+.result-label {
+    -fx-font-size: 14px;
+    -fx-text-fill: #a0a5ae; /* Slightly dimmer text for labels */
+}
+
+.separator {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #50556e; /* Muted separator */
+}
+
+.result-text,
+.dayOfWeekLabel,
+.ageLabel,
+#workHoursLabel {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff; /* White for results */
+    -fx-padding: 5 0 0 0;
+}
+
+.timer-display,
+.countdown-display {
+    -fx-font-size: 36px; /* Larger display for timer/countdown */
+    -fx-font-weight: bold;
+    -fx-text-fill: #00ffcc; /* Neon Cyan/Teal for dynamic displays */
+    -fx-effect: dropshadow(gaussian, rgba(0, 255, 204, 0.4), 10, 0.0, 0, 2);
+    -fx-padding: 10px;
+    -fx-background-color: rgba(40, 40, 60, 0.5); /* Slightly darker background */
+    -fx-background-radius: 5;
+    -fx-border-color: #00ffcc;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5;
+}
+
+
+/* --- Input Controls --- */
+.text-field,
+.combo-box,
+.date-picker > .text-field { /* Target text-field part of DatePicker */
+    -fx-background-color: #2a2a3f; /* Slightly lighter dark blue */
+    -fx-text-fill: #e0e0e0; /* Brighter text for inputs */
+    -fx-prompt-text-fill: #70758e; /* Muted prompt text */
+    -fx-border-color: #40455e; /* Subtle border */
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+    -fx-font-size: 13px;
+    -fx-padding: 5px 8px;
+}
+
+.text-field:focused,
+.combo-box:focused,
+.date-picker:focused > .text-field {
+    -fx-border-color: #00bfff; /* Accent border on focus */
+    -fx-border-width: 1.5px;
+    -fx-background-color: #30304f; /* Slightly lighter when focused */
+}
+
+/* Specific Input Styles */
+.time-field {
+    -fx-alignment: CENTER;
+}
+
+.result-field {
+    -fx-font-weight: bold;
+    -fx-background-color: #1a1a2a; /* Even darker for read-only result */
+    -fx-border-color: #50556e;
+    -fx-text-fill: #00ffcc; /* Neon Cyan for results */
+    -fx-editable: false; /* Ensure it looks non-editable */
+}
+
+/* --- ComboBox Customization --- */
+.combo-box .list-cell {
+    -fx-background-color: #2a2a3f;
+    -fx-text-fill: #e0e0e0;
+    -fx-padding: 5px 10px;
+}
+
+.combo-box .list-cell:hover {
+    -fx-background-color: #3a3a4f;
+    -fx-text-fill: #ffffff;
+}
+
+.combo-box .list-cell:filled:selected,
+.combo-box .list-cell:filled:selected:hover {
+    -fx-background-color: #00bfff;
+    -fx-text-fill: #1e1e2f; /* Dark text on selected */
+}
+
+.combo-box-popup .list-view {
+    -fx-background-color: #2a2a3f;
+    -fx-border-color: #40455e;
+    -fx-border-width: 1px;
+}
+
+.combo-box .arrow, .combo-box .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.combo-box .arrow {
+    -fx-shape: "M0 0 L4 4 L8 0 Z"; /* Simple caret */
+    -fx-background-color: #a0a5ae; /* Arrow color */
+    -fx-padding: 4px; /* Adjust size/position */
+}
+
+.combo-box:hover .arrow {
+    -fx-background-color: #c0c5ce;
+}
+
+/* --- DatePicker Customization --- */
+.date-picker .arrow-button {
+    -fx-background-color: #3a3a4f;
+    -fx-background-radius: 0 3 3 0; /* Match text field radius on right */
+    -fx-padding: 5px;
+}
+
+.date-picker .arrow-button:hover {
+    -fx-background-color: #4a4a5f;
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: #c0c5ce;
+    -fx-shape: "M 0 0 H 7 L 3.5 4 z"; /* Calendar icon approximation */
+}
+
+.date-picker-popup {
+    -fx-background-color: #2a2a3f;
+    -fx-border-color: #40455e;
+    -fx-border-width: 1px;
+}
+.date-picker-popup .month-year-pane {
+    -fx-background-color: #3a3a4f;
+}
+.date-picker-popup .spinner .button .left-arrow,
+.date-picker-popup .spinner .button .right-arrow {
+    -fx-background-color: #c0c5ce; /* Color of arrows in calendar */
+}
+.date-picker-popup .day-cell {
+    -fx-text-fill: #c0c5ce;
+    -fx-background-color: #2a2a3f;
+}
+.date-picker-popup .day-cell:hover {
+    -fx-background-color: #3a3a4f;
+}
+.date-picker-popup .day-cell.today {
+    -fx-border-color: #00bfff; /* Highlight today's date */
+    -fx-border-width: 1px;
+}
+.date-picker-popup .day-cell:selected {
+    -fx-background-color: #00bfff;
+    -fx-text-fill: #1e1e2f;
+}
+
+/* --- Buttons --- */
+.button {
+    -fx-background-color: #40455e; /* Default button background */
+    -fx-text-fill: #e0e0e0; /* Default button text */
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 3px;
+    -fx-border-color: transparent;
+    -fx-border-width: 1px;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.4), 5, 0.0, 0, 1); /* Subtle shadow */
+    -fx-transition: background-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Doesn't really work in JavaFX CSS */
+}
+
+.button:hover {
+    -fx-background-color: #50556e; /* Slightly lighter on hover */
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.6), 8, 0.0, 0, 2);
+}
+
+.button:pressed {
+    -fx-background-color: #30354e; /* Darker when pressed */
+    -fx-effect: none; /* Remove shadow when pressed */
+}
+
+/* Specific Button Styles */
+.action-button {
+    -fx-background-color: #007bff; /* Brighter Blue for primary actions */
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #0056b3;
+}
+.action-button:hover {
+    -fx-background-color: #0056b3;
+    -fx-border-color: #003d80;
+}
+.action-button:pressed {
+    -fx-background-color: #003d80;
+}
+
+.reset-button,
+.stop-button {
+    -fx-background-color: #dc3545; /* Red for reset/stop */
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #a71d2a;
+}
+
+.reset-button:hover,
+.stop-button:hover {
+    -fx-background-color: #c82333;
+    -fx-border-color: #a71d2a;
+}
+.reset-button:pressed,
+.stop-button:pressed {
+    -fx-background-color: #a71d2a;
+}
+
+/* --- TabPane --- */
+.tab-pane {
+    -fx-tab-min-width: 100px; /* Ensure tabs have decent width */
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: transparent; /* Make header area transparent */
+    -fx-padding: 5px 0 0 0; /* Padding above tabs */
+}
+
+.tab-pane .tab-header-background {
+    -fx-background-color: #1a1a2a; /* Darker background for the tab bar */
+}
+
+.tab-pane .tab {
+    -fx-background-color: #2a2a3f; /* Tab background */
+    -fx-padding: 8px 15px;
+    -fx-background-radius: 5 5 0 0; /* Rounded top corners */
+    -fx-border-color: transparent;
+    -fx-border-width: 0 0 2 0; /* Bottom border only */
+}
+
+.tab-pane .tab:hover {
+    -fx-background-color: #3a3a4f;
+}
+
+.tab-pane .tab:selected {
+    -fx-background-color: #1e1e2f; /* Match main background when selected */
+    -fx-border-color: #00bfff; /* Accent color bottom border */
+    -fx-border-width: 0 0 3 0; /* Make selected border thicker */
+    -fx-focus-color: transparent; /* Remove focus ring */
+    -fx-faint-focus-color: transparent;
+}
+
+.tab-pane .tab:selected .tab-label {
+    -fx-text-fill: #ffffff; /* White text for selected tab */
+    -fx-font-weight: bold;
+}
+
+.tab-pane .tab .tab-label {
+    -fx-text-fill: #a0a5ae; /* Default tab text color */
+    -fx-font-size: 13px;
+}
+
+.tab-pane .tab-content-area {
+    -fx-background-color: #1e1e2f; /* Match root background */
+    -fx-padding: 20px; /* Padding inside tab content */
+    -fx-border-color: #40455e; /* Subtle border around content */
+    -fx-border-width: 1 0 0 0; /* Border only on top */
+}
+
+/* --- TableView --- */
+.table-view {
+    -fx-background-color: #2a2a3f; /* Background for table */
+    -fx-border-color: #40455e;
+    -fx-border-width: 1px;
+    -fx-background-radius: 3;
+    -fx-border-radius: 3;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #3a3a4f; /* Header background */
+    -fx-background-radius: 3 3 0 0; /* Match table radius */
+    -fx-background-insets: 0;
+}
+
+.table-view .column-header,
+.table-view .filler { /* Filler is the empty space after columns */
+    -fx-background-color: transparent;
+    -fx-border-color: transparent transparent #40455e transparent; /* Bottom border for headers */
+    -fx-border-width: 1px;
+    -fx-padding: 8px 10px;
+    -fx-size: 35px; /* Header height */
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #e0e0e0; /* Header text color */
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #c0c5ce; /* Cell text color */
+    -fx-border-color: transparent transparent #40455e transparent; /* Bottom border for cells */
+    -fx-border-width: 1px;
+    -fx-padding: 5px 10px;
+    -fx-alignment: CENTER_LEFT;
+}
+
+.table-view .table-row-cell {
+    -fx-background-color: #2a2a3f; /* Default row color */
+    -fx-background-insets: 0;
+}
+
+.table-view .table-row-cell:odd {
+    -fx-background-color: #2f2f44; /* Slightly different for odd rows (striping) */
+    -fx-background-insets: 0;
+}
+
+.table-view .table-row-cell:hover {
+    -fx-background-color: #3f3f54; /* Hover effect */
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #007bff; /* Selection color */
+    -fx-background-insets: 0;
+}
+
+.table-view .table-row-cell:selected .table-cell {
+    -fx-text-fill: #ffffff; /* Text color for selected cells */
+}
+
+/* Remove vertical grid lines */
+.table-view .column-header,
+.table-view .table-cell {
+    -fx-border-style: null; /* Effectively hides default borders */
+    /* Re-apply bottom border */
+    -fx-border-color: transparent transparent #40455e transparent;
+    -fx-border-width: 1px;
+}
+
+/* --- ScrollBar (often needed with TableView) --- */
+.scroll-bar:vertical, .scroll-bar:horizontal {
+    -fx-background-color: #2a2a3f;
+    -fx-background-radius: 3;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #50556e;
+    -fx-background-radius: 3;
+    -fx-background-insets: 1;
+}
+
+.scroll-bar .thumb:hover {
+    -fx-background-color: #60657e;
+}
+
+.scroll-bar .increment-button, .scroll-bar .decrement-button {
+    -fx-background-color: #3a3a4f;
+    -fx-background-radius: 3;
+    -fx-padding: 4;
+}
+
+.scroll-bar .increment-arrow, .scroll-bar .decrement-arrow {
+    -fx-shape: " "; /* Hide default arrows */
+    -fx-padding: 0;
+}
+
+/* --- VBox inside Age Tab --- */
+#ageDetailsBox {
+    -fx-background-color: rgba(40, 40, 60, 0.5); /* Use a semi-transparent darker box */
+    -fx-padding: 10px;
+    -fx-background-radius: 5;
+    -fx-border-color: #40455e;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5;
+    -fx-min-width: 200px; /* Give it some minimum width */
+}
+
+#ageDetailsBox .label {
+    -fx-text-fill: #e0e0e0; /* Ensure labels inside are bright */
+    -fx-font-size: 13px;
+}

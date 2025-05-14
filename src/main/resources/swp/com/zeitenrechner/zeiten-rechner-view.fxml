@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" spacing="10.0" xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="swp.com.zeitenrechner.ZeitenRechnerController"
+      stylesheets="@styles.css">
+    <padding>
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
+    </padding>
+
+    <Label text="Zeitenrechner" styleClass="app-title"/>
+
+    <TabPane tabClosingPolicy="UNAVAILABLE" VBox.vgrow="ALWAYS" styleClass="main-tabs">
+        <Tab text="Zeit-Rechner">
+            <VBox spacing="15.0" alignment="CENTER" styleClass="tab-content">
+                <GridPane hgap="15" vgap="15" alignment="CENTER">
+                    <Label text="Erste Zeit:" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="input-label"/>
+                    <HBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="0" alignment="CENTER_LEFT">
+                        <TextField fx:id="hours1Field" promptText="Stunden" prefWidth="70" styleClass="time-field"/>
+                        <Label text=":" styleClass="separator"/>
+                        <TextField fx:id="minutes1Field" promptText="Minuten" prefWidth="70" styleClass="time-field"/>
+                        <Label text=":" styleClass="separator"/>
+                        <TextField fx:id="seconds1Field" promptText="Sekunden" prefWidth="70" styleClass="time-field"/>
+                    </HBox>
+
+                    <Label text="Zweite Zeit:" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="input-label"/>
+                    <HBox spacing="5" GridPane.columnIndex="1" GridPane.rowIndex="1" alignment="CENTER_LEFT">
+                        <TextField fx:id="hours2Field" promptText="Stunden" prefWidth="70" styleClass="time-field"/>
+                        <Label text=":" styleClass="separator"/>
+                        <TextField fx:id="minutes2Field" promptText="Minuten" prefWidth="70" styleClass="time-field"/>
+                        <Label text=":" styleClass="separator"/>
+                        <TextField fx:id="seconds2Field" promptText="Sekunden" prefWidth="70" styleClass="time-field"/>
+                    </HBox>
+
+                    <Label text="Ergebnis:" GridPane.columnIndex="0" GridPane.rowIndex="2" styleClass="result-label"/>
+                    <TextField fx:id="resultField" editable="false" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="result-field"/>
+                </GridPane>
+
+                <HBox spacing="15" alignment="CENTER">
+                    <Button text="Addieren" onAction="#onAddButtonClick" styleClass="action-button"/>
+                    <Button text="Subtrahieren" onAction="#onSubtractButtonClick" styleClass="action-button"/>
+                    <Button text="Zurücksetzen" onAction="#onResetButtonClick" styleClass="reset-button"/>
+                </HBox>
+            </VBox>
+        </Tab>
+
+        <Tab text="Timer">
+            <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
+                <HBox spacing="10" alignment="CENTER">
+                    <TextField fx:id="timerField" promptText="Sekunden" prefWidth="100" styleClass="input-field"/>
+                    <Button text="Start" onAction="#onStartTimerButtonClick" styleClass="action-button"/>
+                    <Button text="Stop" onAction="#onStopTimerButtonClick" styleClass="stop-button"/>
+                </HBox>
+                <Label fx:id="timerLabel" text="00:00:00" styleClass="timer-display"/>
+            </VBox>
+        </Tab>
+
+        <Tab text="Umrechner">
+            <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
+                <HBox spacing="15" alignment="CENTER">
+                    <TextField fx:id="convertInput" promptText="Eingabe" prefWidth="100" styleClass="input-field"/>
+                    <ComboBox fx:id="fromUnitCombo" promptText="Von" styleClass="combo-box"/>
+                    <ComboBox fx:id="toUnitCombo" promptText="Zu" styleClass="combo-box"/>
+                    <Button text="Umrechnen" onAction="#onConvertButtonClick" styleClass="action-button"/>
+                </HBox>
+                <Label fx:id="convertResult" text="Ergebnis: " styleClass="result-text"/>
+            </VBox>
+        </Tab>
+
+        <Tab text="Datum zu Wochentag">
+            <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
+                <HBox spacing="15" alignment="CENTER">
+                    <DatePicker fx:id="datePicker" promptText="Datum auswählen" styleClass="date-picker"/>
+                    <Button text="Wochentag anzeigen" onAction="#onShowDayOfWeekButtonClick" styleClass="action-button"/>
+                </HBox>
+                <Label fx:id="dayOfWeekLabel" styleClass="result-text"/>
+            </VBox>
+        </Tab>
+
+        <Tab text="Alter Berechnen">
+            <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
+                <Label text="Geburtsdatum:" styleClass="section-title"/>
+                <DatePicker fx:id="birthDatePicker" promptText="Geburtsdatum auswählen" styleClass="date-picker"/>
+                <Button text="Alter berechnen" onAction="#onCalculateAgeClick" styleClass="action-button"/>
+                <Label fx:id="ageLabel" styleClass="result-text"/>
+                <VBox fx:id="ageDetailsBox" spacing="5" alignment="CENTER">
+                    <!-- Details will be added programmatically -->
+                </VBox>
+            </VBox>
+        </Tab>
+
+        <Tab text="Countdown">
+            <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
+                <Label text="Event planen" styleClass="section-title"/>
+                <GridPane hgap="10" vgap="10" alignment="CENTER">
+                    <Label text="Event Name:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="input-label"/>
+                    <TextField fx:id="eventNameField" promptText="Name des Events" GridPane.rowIndex="0" GridPane.columnIndex="1" styleClass="input-field"/>
+
+                    <Label text="Datum:" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="input-label"/>
+                    <DatePicker fx:id="eventDatePicker" GridPane.rowIndex="1" GridPane.columnIndex="1" styleClass="date-picker"/>
+                </GridPane>
+                <Button text="Countdown berechnen" onAction="#onCalculateCountdownClick" styleClass="action-button"/>
+                <Label fx:id="countdownLabel" styleClass="countdown-display"/>
+            </VBox>
+        </Tab>
+
+        <Tab text="Arbeitszeit">
+            <VBox spacing="15" alignment="CENTER" styleClass="tab-content">
+                <Label text="Arbeitszeit-Tracker" styleClass="section-title"/>
+                <GridPane hgap="10" vgap="10" alignment="CENTER">
+                    <Label text="Start:" GridPane.rowIndex="0" GridPane.columnIndex="0" styleClass="input-label"/>
+                    <HBox spacing="5" GridPane.rowIndex="0" GridPane.columnIndex="1">
+                        <TextField fx:id="workStartHourField" promptText="Std" prefWidth="50" styleClass="time-field"/>
+                        <Label text=":" styleClass="separator"/>
+                        <TextField fx:id="workStartMinField" promptText="Min" prefWidth="50" styleClass="time-field"/>
+                    </HBox>
+
+                    <Label text="Ende:" GridPane.rowIndex="1" GridPane.columnIndex="0" styleClass="input-label"/>
+                    <HBox spacing="5" GridPane.rowIndex="1" GridPane.columnIndex="1">
+                        <TextField fx:id="workEndHourField" promptText="Std" prefWidth="50" styleClass="time-field"/>
+                        <Label text=":" styleClass="separator"/>
+                        <TextField fx:id="workEndMinField" promptText="Min" prefWidth="50" styleClass="time-field"/>
+                    </HBox>
+
+                    <Label text="Pause (Min):" GridPane.rowIndex="2" GridPane.columnIndex="0" styleClass="input-label"/>
+                    <TextField fx:id="breakMinutesField" promptText="0" prefWidth="50" GridPane.rowIndex="2" GridPane.columnIndex="1" styleClass="time-field"/>
+                </GridPane>
+                <Button text="Arbeitszeit berechnen" onAction="#onCalculateWorkHoursClick" styleClass="action-button"/>
+                <Label fx:id="workHoursLabel" styleClass="result-text"/>
+
+                <TableView fx:id="workLogTable" VBox.vgrow="ALWAYS" prefHeight="150">
+                    <columns>
+                        <TableColumn fx:id="dateColumn" text="Datum"/>
+                        <TableColumn fx:id="startTimeColumn" text="Start"/>
+                        <TableColumn fx:id="endTimeColumn" text="Ende"/>
+                        <TableColumn fx:id="breakColumn" text="Pause"/>
+                        <TableColumn fx:id="totalColumn" text="Gesamt"/>
+                    </columns>
+                </TableView>
+                <HBox spacing="10" alignment="CENTER">
+                    <Button text="Eintrag hinzufügen" onAction="#onAddWorkLogEntryClick" styleClass="action-button"/>
+                    <Button text="Eintrag löschen" onAction="#onDeleteWorkLogEntryClick" styleClass="reset-button"/>
+                </HBox>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>
